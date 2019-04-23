@@ -1,2 +1,4 @@
 .idea
 datasets
+stackoverflow/__pycache__
+stackoverflow/spiders/__pycache__
