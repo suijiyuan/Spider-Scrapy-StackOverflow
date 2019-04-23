@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 # Scrapy settings for stackoverflow project
 #
 # For simplicity, this file contains only settings considered important or
@@ -64,9 +62,9 @@ ROBOTSTXT_OBEY = True
 
 # Configure item pipelines
 # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'stackoverflow.pipelines.StackoverflowPipeline': 300,
-#}
+ITEM_PIPELINES = {
+   'stackoverflow.pipelines.StackOverflowPipeline': 300,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://doc.scrapy.org/en/latest/topics/autothrottle.html
