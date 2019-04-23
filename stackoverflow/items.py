@@ -7,6 +7,3 @@ class StackOverflowItem(scrapy.Item):
     body = scrapy.Field()
     tags = scrapy.Field()
     link = scrapy.Field()
-
-    # def __str__(self):
-    #     pass
