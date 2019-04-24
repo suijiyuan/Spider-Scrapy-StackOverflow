@@ -13,14 +13,16 @@ class StackOverflowSpider(scrapy.Spider):
     def parse(self, response):
         for page_index in range(5):
             url = base_url_pattern % str(page_index)
-            yield scrapy.Request(url, callback=self.parse_item)
+            yield scrapy.Request(url, callback=StackOverflowSpider.parse_item)
 
-    def parse_item(self, response):
+    @staticmethod
+    def parse_item(response):
         for href in response.xpath('//div[@class="question-summary"]/div[2]/h3/a/@href'):
             full_url = response.urljoin(href.extract())
-            yield scrapy.Request(full_url, callback=self.parse_question)
+            yield scrapy.Request(full_url, callback=StackOverflowSpider.parse_question)
 
-    def parse_question(self, response):
+    @staticmethod
+    def parse_question(response):
         item = StackOverflowItem()
         item['title'] = response.xpath('//h1/a/text()').extract()[0]
         item['votes'] = response.xpath('//div[@class="question"]/div[2]/div[1]/div[1]/div[1]/text()').extract()[0]

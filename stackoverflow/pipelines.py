@@ -11,8 +11,9 @@ class StackOverflowPipeline(object):
         if os.path.exists(file_path):
             os.remove(file_path)
 
-    def process_item(self, item, spider):
+    @staticmethod
+    def process_item(item, spider):
         file_path = os.getcwd() + '/datasets/data'
         with open(file_path, 'a') as file:
-            file.write(str(item) + '\n')
+            file.write(str(spider) + ': ' + str(item) + '\n')
         return item
